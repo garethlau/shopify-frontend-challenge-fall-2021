@@ -4,19 +4,15 @@ import {
   Flex,
   Spacer,
   useColorModeValue,
-  Button,
   IconButton,
   useColorMode,
   HStack,
-  Fade,
-  Center,
   Text,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 const NavBar: React.FC<{}> = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  //   Toggle {colorMode === "light" ? "Dark" : "Light"}
 
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} p="10px">

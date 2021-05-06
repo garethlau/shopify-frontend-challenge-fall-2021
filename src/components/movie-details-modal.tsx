@@ -7,21 +7,15 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  ModalProps,
   Button,
   Text,
-  Heading,
   Stack,
   Box,
   Tag,
   TagLabel,
   Skeleton,
-  HStack,
-  Avatar,
   Wrap,
   WrapItem,
-  BoxProps,
-  useBreakpointValue,
 } from "@chakra-ui/react";
 import useNominations from "../hooks/useNominations";
 import useMovie from "../hooks/queries/useMovie";

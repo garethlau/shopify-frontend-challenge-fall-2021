@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState } from "react";
 import MovieDetailsModal from "../components/movie-details-modal";
 import { useDisclosure, UseDisclosureProps } from "@chakra-ui/react";
 

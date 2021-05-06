@@ -1,24 +1,16 @@
 import React from "react";
 import {
   Box,
-  Wrap,
-  WrapItem,
-  Grid,
   Image,
   Text,
   Heading,
   HStack,
-  CloseButton,
   useColorModeValue,
   Center,
-  Flex,
   Alert,
-  AlertIcon,
-  Icon,
   Button,
 } from "@chakra-ui/react";
 import useNominations from "../hooks/useNominations";
-import { GiPartyPopper } from "react-icons/gi";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 
 const FallbackImage: React.FC<{ title: string }> = ({ title }) => {

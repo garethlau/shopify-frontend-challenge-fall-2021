@@ -1,15 +1,6 @@
 import React from "react";
 import useNominations from "../hooks/useNominations";
-import {
-  Flex,
-  Heading,
-  Text,
-  Box,
-  Alert,
-  AlertIcon,
-  Fade,
-  Collapse,
-} from "@chakra-ui/react";
+import { Flex, Heading, Text, Box, Alert, Collapse } from "@chakra-ui/react";
 import MovieCard from "./movie-card";
 import { AnimateSharedLayout, motion, AnimatePresence } from "framer-motion";
 

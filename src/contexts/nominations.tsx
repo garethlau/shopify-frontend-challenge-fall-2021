@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
 import usePersistantState from "../hooks/usePersistantState";
 import { MovieBase } from "../interfaces";
 

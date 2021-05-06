@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useSearch from "../hooks/useSearch";
 import useDebounce from "../hooks/useDebounce";
-
 import useMovies from "../hooks/queries/useMovies";
-
 import MovieCard from "./movie-card";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import {
