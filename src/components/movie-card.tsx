@@ -54,7 +54,13 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
   }
 
   return (
-    <Grid w="100%" my={3} templateColumns="100px auto" templateRows="auto">
+    <Grid
+      w="100%"
+      my={3}
+      templateColumns="100px auto"
+      templateRows="auto"
+      bg={useColorModeValue("white", "gray.800")}
+    >
       <Box h="150px" w="100px" overflow="hidden" borderRadius="md">
         <Image
           fallbackSrc="https://via.placeholder.com/150x100&text=Missing+poster+image"
