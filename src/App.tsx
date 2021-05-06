@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { SearchProvider } from "./contexts/search";
+import { NominationsProvider } from "./contexts/nominations";
+import { MovieDetailsModalProvider } from "./contexts/movie-details-modal";
+import Nomination from "./pages/nomination";
+import { QueryClient, QueryClientProvider } from "react-query";
 
+import WithNavBar from "./components/layouts/with-nav-bar";
+
+const queryClient = new QueryClient();
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <SearchProvider>
+        <NominationsProvider>
+          <MovieDetailsModalProvider>
+            <WithNavBar>
+              <Router>
+                <Switch>
+                  <Route path="/" exact component={Nomination} />
+                </Switch>
+              </Router>
+            </WithNavBar>
+          </MovieDetailsModalProvider>
+        </NominationsProvider>
+      </SearchProvider>
+    </QueryClientProvider>
   );
 }
 
