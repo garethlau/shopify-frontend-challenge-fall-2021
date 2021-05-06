@@ -16,7 +16,7 @@ export async function getMovies(title: string, page: number): Promise<Result> {
     type: "movie",
   }).toString();
 
-  const response = await axios.get(`http://www.omdbapi.com/?${params}`);
+  const response = await axios.get(`https://www.omdbapi.com/?${params}`);
   const { data } = response;
   const search: any = data.Search;
 
