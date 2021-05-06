@@ -8,8 +8,11 @@ import {
   useColorMode,
   HStack,
   Text,
+  Icon,
+  Link,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { FaGithub } from "react-icons/fa";
 
 const NavBar: React.FC<{}> = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -22,6 +25,15 @@ const NavBar: React.FC<{}> = () => {
         </Box>
         <Spacer />
         <HStack>
+          <Link
+            isExternal
+            href="https://github.com/garethlau/shopify-frontend-challenge-fall-2021"
+          >
+            <IconButton
+              icon={<Icon as={FaGithub} />}
+              aria-label="Link to Github repository"
+            />
+          </Link>
           {colorMode === "light" ? (
             <IconButton
               onClick={toggleColorMode}
