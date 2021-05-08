@@ -9,9 +9,16 @@ import {
   Center,
   Alert,
   Button,
+  Spacer,
+  Flex,
+  useDisclosure,
+  IconButton,
+  Icon,
 } from "@chakra-ui/react";
+import { MdShare } from "react-icons/md";
 import useNominations from "../hooks/useNominations";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
+import ShareNominationsModal from "./share-nominations-modal";
 
 const FallbackImage: React.FC<{ title: string }> = ({ title }) => {
   return (
@@ -61,37 +68,53 @@ const NominatedMovieCard: React.FC<{
 };
 
 const NominatedMoviesShowcase: React.FC<{}> = () => {
-  const { nominations, removeNomination } = useNominations();
-  return (
-    <Box p={2}>
-      <Heading align="center">Nominations</Heading>
+  const { nominations, removeNomination, isComplete } = useNominations();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-      {nominations.length === 5 && (
-        <Alert borderRadius="sm" status="success">
-          🎉 You've nominated 5 movies!
-        </Alert>
-      )}
-      {nominations.length > 0 ? (
-        <HStack w="auto" h="auto" overflowX="auto" pb="5px">
-          <AnimateSharedLayout>
-            {nominations.map(({ title, poster, imdbId }) => (
-              <motion.div layout key={imdbId}>
-                <AnimatePresence>
-                  <NominatedMovieCard
-                    imdbId={imdbId}
-                    title={title}
-                    poster={poster}
-                    removeNomination={removeNomination}
-                  />
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </AnimateSharedLayout>
+  return (
+    <>
+      <ShareNominationsModal
+        isOpen={isOpen}
+        onClose={onClose}
+        nominations={nominations}
+        isComplete={isComplete}
+      />
+      <Box p={2}>
+        <HStack mx="auto" my={2} w="min-content">
+          <Heading>Nominations</Heading>
+          <IconButton
+            onClick={onOpen}
+            icon={<Icon as={MdShare} />}
+            aria-label="Share nominations button"
+          />
         </HStack>
-      ) : (
-        <Text align="center">You haven't nominated any movies.</Text>
-      )}
-    </Box>
+        {nominations.length === 5 && (
+          <Alert borderRadius="sm" status="success">
+            🎉 You've nominated 5 movies!
+          </Alert>
+        )}
+        {nominations.length > 0 ? (
+          <HStack w="auto" h="auto" overflowX="auto" pb="5px">
+            <AnimateSharedLayout>
+              {nominations.map(({ title, poster, imdbId }) => (
+                <motion.div layout key={imdbId}>
+                  <AnimatePresence>
+                    <NominatedMovieCard
+                      imdbId={imdbId}
+                      title={title}
+                      poster={poster}
+                      removeNomination={removeNomination}
+                    />
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </AnimateSharedLayout>
+          </HStack>
+        ) : (
+          <Text align="center">You haven't nominated any movies.</Text>
+        )}
+      </Box>
+    </>
   );
 };
 
