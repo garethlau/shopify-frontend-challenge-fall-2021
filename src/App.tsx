@@ -7,6 +7,7 @@ import Nomination from "./pages/nomination";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import WithNavBar from "./components/layouts/with-nav-bar";
+import View from "./pages/view";
 
 const queryClient = new QueryClient();
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Router>
                 <Switch>
                   <Route path="/" exact component={Nomination} />
+                  <Route path="/view" component={View} />
                 </Switch>
               </Router>
             </WithNavBar>
