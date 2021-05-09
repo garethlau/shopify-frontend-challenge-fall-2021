@@ -80,6 +80,7 @@ const View: React.FC<{}> = () => {
       <Stack align="center" spacing={4}>
         {movies.map((movie) => (
           <MoviePosterImage
+            title={movie.title}
             poster={movie.poster}
             w="300px"
             h="450px"
