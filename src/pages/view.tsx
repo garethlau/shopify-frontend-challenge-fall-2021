@@ -82,6 +82,7 @@ const View: React.FC<{}> = () => {
           <MoviePosterImage
             poster={movie.poster}
             w="300px"
+            h="450px"
             maxW="400px"
             borderRadius="md"
           />
