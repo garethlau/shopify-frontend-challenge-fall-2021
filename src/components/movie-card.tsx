@@ -1,16 +1,13 @@
 import React from "react";
 import {
   Box,
-  Image,
   Flex,
   Heading,
   Text,
   Grid,
   Spacer,
   Button,
-  CenterProps,
   useColorModeValue,
-  Center,
   useToast,
 } from "@chakra-ui/react";
 import { MovieBase } from "../interfaces";
@@ -21,14 +18,6 @@ import MoviePosterImage from "./movie-poster-image";
 interface Props {
   movie: MovieBase;
 }
-
-const ImageFallback: React.FC<CenterProps> = ({ ...rest }) => (
-  <Center p="10px" bg={useColorModeValue("gray.200", "gray.500")} {...rest}>
-    <Text align="center" opacity={0.6}>
-      Missing poster image
-    </Text>
-  </Center>
-);
 
 const MovieCard: React.FC<Props> = ({ movie }) => {
   const { addNomination, removeNomination, nominations } = useNominations();
