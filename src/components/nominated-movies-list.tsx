@@ -30,7 +30,7 @@ const NominatedMoviesList: React.FC<{}> = () => {
         onClose={onClose}
       />
       <Flex p={2} direction="column" h="100%">
-        <Flex>
+        <Flex mb={2}>
           <Heading size="lg">Nominations</Heading>
           <Spacer />
           <Button onClick={onOpen} rightIcon={<Icon as={MdShare} />}>
