@@ -7,14 +7,16 @@ import {
   Center,
   Text,
   useColorModeValue,
+  Stack,
 } from "@chakra-ui/react";
 
 interface Props extends BoxProps {
+  title?: string;
   poster: string;
   animateOnHover?: boolean;
 }
 
-const ImageFallback: React.FC<CenterProps> = ({ ...rest }) => (
+const ImageFallback: React.FC<CenterProps> = ({ title, ...rest }) => (
   <Center
     p="10px"
     bg={useColorModeValue("gray.200", "gray.500")}
@@ -22,9 +24,16 @@ const ImageFallback: React.FC<CenterProps> = ({ ...rest }) => (
     w="100%"
     h="100%"
   >
-    <Text align="center" opacity={0.6}>
-      Missing poster image
-    </Text>
+    <Stack>
+      {title && (
+        <Text align="center" opacity={0.6}>
+          {title}
+        </Text>
+      )}
+      <Text align="center" opacity={0.6} as="i">
+        Missing poster image
+      </Text>
+    </Stack>
   </Center>
 );
 
@@ -37,6 +46,7 @@ const anim = {
 };
 
 const MoviePostImage: React.FC<Props> = ({
+  title,
   poster,
   width,
   height,
@@ -56,7 +66,7 @@ const MoviePostImage: React.FC<Props> = ({
         h="100%"
         W="100%"
         src={poster}
-        fallback={<ImageFallback w={width} h={height} />}
+        fallback={<ImageFallback title={title} w={width} h={height} />}
         objectFit="cover"
         {...(animateOnHover ? anim : {})}
       />
