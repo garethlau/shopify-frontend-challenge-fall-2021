@@ -16,6 +16,7 @@ import {
 import { MovieBase } from "../interfaces";
 import useNominations from "../hooks/useNominations";
 import useMovieDetailsModal from "../hooks/useMovieDetailsModal";
+import MoviePosterImage from "./movie-poster-image";
 
 interface Props {
   movie: MovieBase;
@@ -61,20 +62,12 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
       templateRows="auto"
       bg={useColorModeValue("white", "gray.800")}
     >
-      <Box h="150px" w="100px" overflow="hidden" borderRadius="md">
-        <Image
-          fallbackSrc="https://via.placeholder.com/150x100&text=Missing+poster+image"
-          h="150px"
-          src={movie.poster}
-          transform="scale(1.0)"
-          _hover={{
-            transform: "scale(1.05)",
-          }}
-          transition="0.3s ease-in-out"
-          objectFit="cover"
-          fallback={<ImageFallback w="100px" h="150px" />}
-        />
-      </Box>
+      <MoviePosterImage
+        borderRadius="md"
+        poster={movie.poster}
+        w="100px"
+        h="150px"
+      />
       <Flex p={2} direction="column">
         <Heading size="md">{movie.title}</Heading>
         <Text>{movie.year}</Text>

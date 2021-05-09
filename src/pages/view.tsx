@@ -5,60 +5,14 @@ import {
   Heading,
   Spinner,
   Stack,
-  Image,
   Text,
-  chakra,
-  useColorModeValue,
   Button,
   Link,
 } from "@chakra-ui/react";
 import { useLocation, Link as ReactRouterLink } from "react-router-dom";
 import { Movie } from "../interfaces/Movie";
 import getMovieById from "../api/getMovieById";
-
-const InfoPoster: React.FC<{ movie: Movie }> = ({ movie }) => {
-  const [showInfo, setShowInfo] = useState<boolean>(false);
-  function toggle() {
-    setShowInfo(!showInfo);
-  }
-  return (
-    <Box
-      maxW="350px"
-      h="100%"
-      w="90%"
-      pos="relative"
-      onClick={toggle}
-      bg={useColorModeValue("gray.400", "gray.900")}
-      borderRadius="md"
-      boxShadow="lg"
-      _hover={{ cursor: "pointer" }}
-    >
-      <chakra.span>
-        <Image
-          borderRadius="md"
-          src={movie.poster}
-          w="100%"
-          opacity={showInfo ? 0 : 1}
-          transition="0.2s ease-in-out"
-        />
-      </chakra.span>
-      <chakra.span
-        pos="absolute"
-        top="50%"
-        left="50%"
-        w="200px"
-        transform="translate(-50%, -50%)"
-      >
-        {showInfo && (
-          <Stack>
-            <Heading fontSize="md">{movie.title}</Heading>
-            <Text>{movie.year}</Text>
-          </Stack>
-        )}
-      </chakra.span>
-    </Box>
-  );
-};
+import MoviePosterImage from "../components/movie-poster-image";
 
 const View: React.FC<{}> = () => {
   const location = useLocation();
@@ -125,7 +79,12 @@ const View: React.FC<{}> = () => {
       </Heading>
       <Stack align="center" spacing={4}>
         {movies.map((movie) => (
-          <InfoPoster key={movie.imdbId} movie={movie} />
+          <MoviePosterImage
+            poster={movie.poster}
+            w="300px"
+            maxW="400px"
+            borderRadius="md"
+          />
         ))}
       </Stack>
     </Box>
