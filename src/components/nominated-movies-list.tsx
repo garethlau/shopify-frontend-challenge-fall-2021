@@ -38,7 +38,7 @@ const NominatedMoviesList: React.FC<{}> = () => {
           </Button>
         </Flex>
         <Collapse in={isComplete} animateOpacity>
-          <Alert borderRadius="sm" status="success">
+          <Alert borderRadius="md" status="success">
             🎉 You've nominated 5 movies!
           </Alert>
         </Collapse>
